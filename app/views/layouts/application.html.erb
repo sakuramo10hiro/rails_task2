@@ -1,16 +1,80 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TripApp</title>
+    <title>Poteshare</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <header class="header">
+      <div class="header-inner">
+        <div class="header-left-nav">
+          <%= link_to root_path do%>
+            <%= image_tag 'https://presite-potepancamp-rails-02.herokuapp.com/assets/logo.png', alt: 'ロゴイメージ' %>
+          <% end %> 
+          
+            <div class="header-sharch d-lg-inline-block d-none">
+             <%= form_with  url: room_search_path,method: :get, local: true do |f| %>
+              <%= f.text_field :area,class:"form-control",placeholder:"エリア"%>
+              <i class="fas fa-map-marker-alt"></i>
+             <% end %>
+            </div> 
+
+            <div class="header-sharch d-lg-inline-block d-none">
+             <%= form_with  url: room_search_path,method: :get, local: true do |f| %>
+              <%= f.text_field :keyword, class:"form-control", placeholder:"キーワード"%>
+              <i class="fas fa-search"></i>
+             <% end %>
+            </div> 
+        </div>
+        <div class="header-right-nav">
+          <% if user_signed_in? %>
+            <div class="nav-item d-sm-inline-block d-none">
+              <%= current_user.name%>
+            </div>
+            <div class="nav-item">
+              <%= image_tag current_user.user_image.url, alt: 'メニュー', class: "mx-3 p-1 host-icon nav-trigger" %>
+            <ul class ="header-nav-menu">
+              <li><%= link_to '宿泊施設一覧', room_search_path, class: 'nav-link' %></li>
+              <li><%= link_to '新規ルーム登録', new_room_path, class: 'nav-link' %></li>
+              <li><%= link_to '登録済みルーム一覧', rooms_path, class: 'nav-link' %></li>
+              <li><%= link_to "予約済みルーム一覧", reservations_path, class: 'nav-link' %></li>
+              <li><%= link_to 'アカウント編集', user_path(current_user.id), class: 'nav-link' %></li>
+              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
+            </ul>
+          <% else %>
+            <div class="nav-item">
+              <%= link_to 'ログイン', user_session_path, class: 'btn btn-primary my-2 mx-3' %>
+              <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-secondary' %>
+            </div>
+          <% end %>
+        </div>
+     </div>
+    </header>
+    <div class="notifications">
+    <% if flash[:notice] %>
+      <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:alert] %>
+    <p class="alert"><%= flash[:alert] %></p>
+    <% end %>
+  </div>
+  <%=yield%>
+  <div class = "footerFixed">
+    <footer class="footer">
+      <p>© 2020 POTEPAN.INC.</p>
+    </footer>
+  </div>
+  <script>
+   $(function(){
+    $('.nav-trigger').click(function(){
+        $('.header-nav-menu').toggle();
+    });
+   });
+  </script>
   </body>
 </html>

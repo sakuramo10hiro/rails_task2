@@ -1,0 +1,21 @@
+<div class = "container-fluid room">
+  <h4 class="pb-4">検索結果:<%= @cnt %>件</h4>
+  <div class = "row">
+    <% @room.each do |room| %>
+    <div class="col-sm-6 col-lg-4 col-xl-3">
+      <div class="room-frame-inner">
+        <%= link_to room_path(room.id), class: 'link' do %>
+          <div class = "room-image-out">
+            <%= image_tag room.room_image.url,  :size => '240x140', class: 'room-image' %>
+          </div>
+          <div class="room-profile">
+            <p class="room-profile-name"><%=room.room_name%></p>
+            <p class="room-profile-city"><%= room.room_address %></p>
+            <p class="room-profile-price price-icon">¥ <%= room.room_price %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+   <% end %> 
+  </div>
+</div>

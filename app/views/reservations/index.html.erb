@@ -1,0 +1,29 @@
+<div class="container-field reservations">
+<h4 class = 'pb-4'>予約済みルーム一覧</h4>
+<table>
+    <thead>
+      <tr align="center">
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>合計料金</th>
+        <th>チェックイン日</th>
+        <th>チェックアウト日</th>
+        <th>予約確定日時</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+      <td><%= link_to (image_tag reservation.room.room_image.url,:size => '240x140'), class: 'reservations-image', controller: 'rooms', action: 'show', id: reservation.room.id%></td>
+        <td class="posts-name"><%= link_to reservation.room.room_name, controller: 'rooms', action: 'show', id: reservation.room.id%></td>
+        <td class="posts-content"><%= reservation.room.room_introduction %></td>
+        <td class="price-icon"><%= reservation.reservation_price %></td>
+        <td><%= reservation.start_date %></td>
+        <td><%= reservation.end_date %></td>
+        <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

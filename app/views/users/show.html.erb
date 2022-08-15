@@ -1,0 +1,53 @@
+<div class="container col-lg-10 user-view">
+    <div class="user-view-box">
+
+        <div class="update-content text-center mb-4 mt-md-2">
+            <div class="row">
+              <h5>マイページ</h5>
+            </div>
+        </div>
+        
+        <div class="update-content">
+            <div class="col-md-6 offset-md-3">
+            <div class="icon-box">
+                <%= image_tag @user.user_image.url, style: "border-radius: 50%",:size => "150x150" %>
+            </div>
+           </div>
+        </div>
+        
+        <div class="update-content">
+            <div class="row">
+                <label class="col-md-3 required-a">名前</label>
+                <div class =" mb-4 col-md-9"><%=@user.name %></div>
+            </div>
+        </div>
+
+        <div class="update-content">
+            <div class="row">
+                <label class="col-md-3 required-a">自己紹介</label>
+                <div class =" mb-4 col-md-9"><%= @user.user_introduction %></div>
+            </div>
+        </div>
+
+        <div class="update-content">
+            <div class="row">
+                <label class="col-md-3 required-a">メールアドレス</label>
+                <div class =" mb-4 col-md-9"><%= @user.email%></div>
+            </div>
+        </div>
+
+        <div class="update-content">
+            <div class="row">
+                <label class="col-md-3 required-a">パスワード</label>
+                <div class =" mb-4 col-md-9">**********</div>
+            </div>
+        </div>
+
+        <div class="update-content">
+            <div class="row justify-content-center">
+                <%= link_to 'プロフィール編集', edit_user_path, class: 'col-md-3 btn btn-primary mx-3' %>
+                <%= link_to 'メールアドレス・パスワード変更', edit_user_registration_path, class: 'col-md-4 btn btn-primary mx-3' %>
+            </div>
+        </div>
+    </div>
+</div>

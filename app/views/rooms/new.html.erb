@@ -1,0 +1,38 @@
+<div class="container room-show-container">
+  <div class="room-view">
+  <%= render "shared/error", obj: @room %> 
+    <%= form_with(model: @room, local: true) do |f| %>
+      <div class="update-content mb-4 mt-md-5">
+        <div class="row">
+          <h5>新規ルーム登録</h5>
+        </div>
+      </div>
+      <div class="update-content mb-3 w-50 row">
+        <%= f.label :room_name ,"ルーム名", class: "col-md-3 required-a" %>
+        <%= f.text_field :room_name, class: "form-control mb-3 col-md-6",placeholder: "ルーム名を入力" %>
+      </div>
+      <div class="update-content mb-3 w-50 row">
+        <%= f.label :room_introduction ,"部屋の特徴", class: "col-md-3 required-a" %>
+        <%= f.text_area :room_introduction, class: "form-control mb-4 col-md-9 ",placeholder: "部屋の説明を入力して下さい" %>
+      </div>
+      <div class="update-content mb-3 w-50 row">
+        <%= f.label :room_price ,"一人/一泊の料金", class: "col-md-3 required-a" %>
+        <%= f.number_field :room_price, class: "form-control mb-4 col-md-9",placeholder: "料金" %>
+      </div>
+      <div class="update-content mb-3 w-50 row">
+        <%= f.label :room_address ,"住所", class: "col-md-3 required-a" %>
+        <%= f.text_field :room_address, class: "form-control mb-4 col-md-9",placeholder: "住所" %>
+      </div>
+      <div class="update-content row">
+        <%= f.label :room_image ,"ルーム画像", class: "rcol-md-3 required-a" %>
+        <%= f.file_field :room_image, class: "mb-4 col-md-9" %>
+      </div>
+     <%= f.hidden_field :user_id, value: current_user.id %>
+     <div class="update-content">
+      <div class="row">
+        <%= f.submit "登録", class: "col-md-5 btn btn-primary mx-3" %>
+      </div>
+     </div>
+   <% end %>
+  </div>
+</div>

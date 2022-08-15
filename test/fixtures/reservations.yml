@@ -1,0 +1,14 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  start_date: 2022-07-20
+  end_date: 2022-07-20
+  people_number: 1
+  user: one
+  room: one
+
+two:
+  start_date: 2022-07-20
+  end_date: 2022-07-20
+  people_number: 1
+  user: two
+  room: two

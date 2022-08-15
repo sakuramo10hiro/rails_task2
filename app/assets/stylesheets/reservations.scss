@@ -1,0 +1,58 @@
+// Place all the styles related to the reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.reservations-new {
+  padding: 30px 0;
+}
+.room-show-nav, .reservations-new-nav {
+  padding: 20px;
+  border: 1px solid #eaedef;
+}
+.reservations-new-check-content {
+  border-bottom: 1px solid #eaedef;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+.room-show-date-select, .reservations-new-date-select {
+  padding: 15px 0;
+}
+.reservations {
+  max-width: 100vw;
+  padding: 30px 60px;
+}
+.reservations table {
+  min-width: 800px;
+}
+.room-posts table thead tr, .reservations table thead tr {
+  border-top: 1px solid #eaedef;
+  border-bottom: 1px solid #eaedef;
+}
+.reservations table thead th {
+  padding: 8px 15px;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.room-posts table tbody tr, .reservations table tbody tr {
+  border-bottom: 1px solid #eaedef;
+}
+.room-posts table tbody td, .reservations table tbody td {
+  padding: 10px;
+}
+.room-posts-image, .reservations-image {
+  width: 240px;
+  height: 140px;
+  object-fit: cover;
+}
+
+.reservations table tbody .posts-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #909090;
+}
+.reservations table tbody a {
+  color: #4a90e2;
+  text-decoration: underline;
+}
+.room-posts table tbody .posts-content, .reservations table tbody .posts-content {
+  max-width: 400px;
+}
