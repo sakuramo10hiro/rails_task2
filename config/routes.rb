@@ -1,6 +1,21 @@
 Rails.application.routes.draw do
-  get 'homes/top'
-  devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'rooms/index'
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+  resources :users
+  resources :rooms
+  get "room/post", to: "rooms#post"
   root to: "home#top"
+  resources :reservations
+  post 'reservations/confirm'
+  get 'room/search',to:'rooms#search'
+  devise_scope :user do
+    # get "user/:id", :to => "users/registrations#detail"
+    get "signup", :to => "users/registrations#new"
+    get "login", :to => "users/sessions#new"
+    get "logout", :to => "users/sessions#destroy"
+  end
+
 end

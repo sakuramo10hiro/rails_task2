@@ -1,2 +1,42 @@
-<h1>Home#top</h1>
-<p>Find me in app/views/home/top.html.erb</p>
+<div class="top">
+    <div class="top-main">
+        <div class="container">
+            <div class="row col-lg-6">
+                <div class="form-fream">
+                    <div class="form-area">
+                        <p class="form-area-title mb-4">Potepan Shareでまだ体験したことのない旅をしよう</p>
+                        <%= form_with  url: room_search_path,method: :get, local: true do |f| %>
+                                <%= f.text_field :area,class:"form-control mb-4 searchform",placeholder:"エリア検索"%> 
+                            <%= f.submit '探す',class:"form-control btn-primary mb-4"%>  
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="panel-area m-5">
+            <h1 class="section-title">おすすめエリア</h1>
+            <div class="row">
+                <div class="panel-item col-lg-4 col-8">
+                 <%= link_to '/room/search?area=東京',class:"room-link" do %>
+                  <span>東京</span>
+                 <%= image_tag "tokyo.jpg",class:"panel-image"%>
+                 <% end %>
+                </div>
+                <div class="panel-item col-lg-4 col-8">
+                 <%= link_to '/room/search?area=北海道',class:"room-link" do %>
+                  <span>北海道</span>
+                 <%= image_tag "hokkaidou.jpg",class:"panel-image"%>
+                 <% end %>
+                </div>
+                <div class="panel-item col-lg-4 col-8">
+                 <%= link_to '/room/search?area=沖縄',class:"room-link" do %>
+                  <span>沖縄</span>
+                 <%= image_tag "okinawa.jpg",class:"panel-image"%>
+                 <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
